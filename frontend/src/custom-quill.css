@@ -1,0 +1,88 @@
+/* Change the background and text color of the editor */
+.ql-container {
+    /* background-color: var(--hover_color); */
+    color: var(--primary_text);
+}
+
+/* removing border from textarea */
+.ql-container.ql-snow{
+    border: none;
+}
+
+.ql-snow .ql-editor{
+    font-size: 14px;
+}
+
+/* Change the background color and border of the toolbar */
+.ql-toolbar.ql-snow {
+    background-color: var(--nav_color);  /* changing background color of editor */
+    border: none;
+}
+
+/* Change the toolbar button colors */
+.ql-toolbar.ql-snow .ql-picker {
+    color: hotpink;
+}
+
+.ql-toolbar.ql-snow .ql-stroke {
+    stroke: var(--secondary_text);    /* text color of toolbar */
+}
+
+/* .ql-toolbar.ql-snow:hover .ql-stroke:hover {
+    stroke: yellow;
+} */
+
+.ql-toolbar.ql-snow .ql-fill {
+    fill: var(--secondary_text);    /* slight colors within toolbar text -> comment written by me as well */
+}
+
+.ql-toolbar.ql-snow .ql-picker-label {
+    color: var(--secondary_text);    /* normal block color */
+}
+
+.ql-toolbar.ql-snow:hover .ql-picker-label:hover {
+    color: var(--primary_text);    /* normal block hover color */
+}
+
+.ql-toolbar.ql-snow .ql-picker-item {
+    color: black;   /* heading color without hover */
+}
+
+/* Change the hover and active states for toolbar buttons */
+.ql-toolbar.ql-snow .ql-picker-label:hover,
+.ql-toolbar.ql-snow .ql-picker-item:hover,
+.ql-toolbar.ql-snow .ql-picker-item.ql-selected {
+    color: var(--primary_text);    /* hover color of heading button */
+    background-color: var(--hover_color);  /* hover background of heading button */
+}
+
+.ql-toolbar.ql-snow button:hover,
+.ql-toolbar.ql-snow button.ql-active {
+    background-color: var(--hover_color);  /* hover background color on normal button */
+}
+
+
+/* ----------------------------------------------------------------------------------------------------- */
+
+
+button:hover .ql-stroke,
+.ql-picker-label:hover .ql-stroke {
+  fill: none;
+  stroke: var(--primary_text) !important;
+}
+
+.ql-active .ql-stroke {
+  fill: none;
+  stroke: var(--primary_text) !important;
+}
+
+button:hover .ql-fill,
+.ql-picker-label:hover .ql-fill {
+  fill: var(--primary_text) !important;
+  stroke: none;
+}
+
+.ql-active .ql-fill {
+  fill: var(--primary_text) !important;
+  stroke: none;
+}

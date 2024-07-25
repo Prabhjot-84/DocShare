@@ -34,9 +34,9 @@ const redTheme = {
 
 const blueTheme = {
   nav_color: '#000d1a',
-  bg_color: '#00264d',
+  bg_color: '#001a33',
   block_color: '#003366',
-  hover_color: '#004080',
+  hover_color: '#004d99',
   primary_text: '#e6e6e6',
   secondary_text: 'white',
 };
@@ -53,14 +53,14 @@ const pinkTheme = {
 const grayTheme = {
   nav_color: '#404040',
   bg_color: '#bfbfbf',
-  block_color: '#d9d9d9',
-  hover_color: '#f2f2f2',
+  block_color: '#e6e6e6',
+  hover_color: '#f6f6f6',
   primary_text: 'black',
   secondary_text: 'white',
 };
 
 export const AppProvider = ({ children }) => {
-  const [theme, setTheme] = useState(darkTheme);
+  const [theme, setTheme] = useState(redTheme);
   const [font, setFont] = useState('Arial'); // Adding font as per your future needs
 
   return (
