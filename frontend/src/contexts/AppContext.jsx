@@ -59,9 +59,19 @@ const grayTheme = {
   secondary_text: 'white',
 };
 
+const font1 = 'Playfair Display'
+const font2 = 'Open Sans'
+const font3 = 'Inconsolata'
+const font4 = 'Bad Script'
+const font5 = 'Handlee'
+const font6 = 'Montserrat'
+const font7 = 'Baskervville'
+const font8 = 'Merienda'
+
 export const AppProvider = ({ children }) => {
+  
   const [theme, setTheme] = useState(redTheme);
-  const [font, setFont] = useState('Arial'); // Adding font as per your future needs
+  const [font, setFont] = useState(font5); 
 
   return (
     <AppContext.Provider value={{ theme, setTheme, font, setFont }}>

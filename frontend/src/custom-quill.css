@@ -1,3 +1,7 @@
+.quill{
+    padding: 0 24px;
+}
+
 /* Change the background and text color of the editor */
 .ql-container {
     /* background-color: var(--hover_color); */
@@ -7,21 +11,80 @@
 /* removing border from textarea */
 .ql-container.ql-snow{
     border: none;
+    height: 70vh;
 }
 
 .ql-snow .ql-editor{
-    font-size: 14px;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    word-spacing: 1px;
+    line-height: 32px;
+    font-family: var(--font);
+}
+
+.ql-snow .ql-editor h1{
+    margin: 18px 0;
+}
+
+.ql-snow .ql-editor h2{
+    margin: 12px 0;
+}
+
+.ql-snow .ql-editor ul, .ql-snow .ql-editor ul{
+    margin: 10px 0;
+}
+
+@media (max-width: 1200px) {
+    .ql-snow .ql-editor {
+        font-size: 17px;
+        line-height: 30px;
+    }
+}
+
+/* Small screens */
+@media (max-width: 992px) {
+    .ql-snow .ql-editor {
+        font-size: 16px;
+        line-height: 28px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 768px) {
+    .ql-snow .ql-editor {
+        font-size: 15px;
+        line-height: 26px;
+    }
+}
+
+@media (max-width: 640px) {
+    .ql-snow .ql-editor {
+        font-size: 14px;
+        line-height: 24px;
+    }
+    .ql-snow .ql-editor h1{
+        margin: 15px 0;
+    }
+    .ql-snow .ql-editor h2{
+        margin: 10px 0;
+    }
+    .ql-snow .ql-editor ul, .ql-snow .ql-editor ul{
+        margin: 8px 0;
+    }
 }
 
 /* Change the background color and border of the toolbar */
 .ql-toolbar.ql-snow {
     background-color: var(--nav_color);  /* changing background color of editor */
     border: none;
+    /* margin: 0 12px; */
+    border-radius: 6px;
+    height: 6vh;
 }
 
 /* Change the toolbar button colors */
 .ql-toolbar.ql-snow .ql-picker {
-    color: hotpink;
+    /* color: hotpink; */
 }
 
 .ql-toolbar.ql-snow .ql-stroke {
@@ -59,6 +122,7 @@
 .ql-toolbar.ql-snow button:hover,
 .ql-toolbar.ql-snow button.ql-active {
     background-color: var(--hover_color);  /* hover background color on normal button */
+    border-radius: 2px;
 }
 
 
@@ -86,3 +150,28 @@ button:hover .ql-fill,
   fill: var(--primary_text) !important;
   stroke: none;
 }
+
+
+/* ----------------------------------------------------------------------------------------------------- */
+
+
+/* Customize the entire scrollbar */
+::-webkit-scrollbar {
+    width: 12px; /* Width of the vertical scrollbar */
+    height: 12px; /* Height of the horizontal scrollbar */
+  }
+  
+  /* Customize the scrollbar thumb */
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--hover_color); /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded corners of the scrollbar thumb */
+    border: 2px solid var(--primary_text); /* Adds space around the scrollbar thumb */
+  }
+  
+  /* Customize the scrollbar track */
+  ::-webkit-scrollbar-track {
+    background: var(--primary_text); /* Color of the scrollbar track */
+    border-radius: 10px; /* Rounded corners of the scrollbar track */
+    border: 1px solid var(--primary_text); /* Adds a border around the scrollbar track */
+  }
+  

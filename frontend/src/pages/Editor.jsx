@@ -7,7 +7,7 @@ import '../custom-quill.css';
 
 const Editor = ( {value, onChange} ) => {
 
-    const { theme } = useAppContext();
+    const { theme, font } = useAppContext();
 
     const modules = {
         toolbar: [
@@ -33,7 +33,9 @@ const Editor = ( {value, onChange} ) => {
                 '--hover_color': theme.hover_color,
                 '--primary_text': theme.primary_text,
                 '--secondary_text': theme.secondary_text,
-            }}>
+                '--font': font,
+            }}
+                className=''>
 
                 <ReactQuill value={value} 
                     modules={modules} 

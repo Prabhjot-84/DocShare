@@ -11,8 +11,19 @@ const Home = () => {
                     <Column />
                 </div>
             </div> */}
-            <div className='p-8 h-[90%] overflow-y-scroll'>
+            <div className='p-8 h-[90vh] sm:h-[88vh] overflow-y-scroll'>
                 <div className='grid grid-cols-[repeat(auto-fit,minmax(325px,1fr))] gap-4 md:gap-y-8 justify-center items-center'>
+                    <File />
+                    <File />
+                    <File />
+                    <File />
+                    <File />
+                    <File />
+                    <File />
+                    <File />
+                    <File />
+                    <File />
+                    <File />
                     <File />
                     <File />
                     <File />

@@ -18,10 +18,10 @@ const Navbar = () => {
 
     return (
         <>
-            <nav style={{ background:`${theme.nav_color}`, color:`${theme.secondary_text}`}} className='p-4 sm:px-10 py-4 sm:py-6 flex items-center justify-between'>
+            <nav style={{ background:`${theme.nav_color}`, color:`${theme.secondary_text}`}} className='h-[10vh] sm:h-[12vh] p-4 sm:px-10 py-4 sm:py-6 flex items-center justify-between'>
                 <div className='flex items-center justify-evenly w-fit'>
                     <img className='w-8' src={Logo} alt='logo' />
-                    <h1 className='text-2xl font-bold tracking-wide hidden sm:block'> &nbsp; DocShare </h1>
+                    <h1 style={{fontFamily:'Nova Square'}} className='text-2xl font-bold tracking-wide hidden sm:block'> &nbsp; DocShare </h1>
                 </div>
                 <div className='flex items-center'>
                     <button style={{ background:`${theme.hover_color}`, color:`${theme.primary_text}`}} className='h-10 px-4 rounded-md hover:scale-105 mr-4'>
