@@ -68,7 +68,7 @@ const font6 = 'Montserrat'
 const font7 = 'Baskervville'
 const font8 = 'Merienda'
 
-export const AppProvider = ({ children }) => {
+export const AppProvider = ({ children }) => { 
   
   const [theme, setTheme] = useState(redTheme);
   const [font, setFont] = useState(font5); 
