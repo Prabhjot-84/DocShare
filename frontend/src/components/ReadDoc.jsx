@@ -2,10 +2,15 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import jsPDF from 'jspdf';
+import { htmlToText } from 'html-to-text';
 
 import { useAppContext } from '../contexts/AppContext';
 import Editor from './Editor';
 import Popup from './Popup';
+import { editDocument } from '../utils/editDocument'
+import { deleteDocument } from '../utils/deleteDocument';
+import { downloadPDF } from '../utils/downloadPDF';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -21,7 +26,7 @@ library.add(faFloppyDisk);
 
 const ReadDoc = () => {
     
-    const { theme } = useAppContext();
+    const { theme, font } = useAppContext();
 
     const { id } = useParams(); // Get the document ID from the URL
     const [document, setDocument] = useState(null);
@@ -79,77 +84,7 @@ const ReadDoc = () => {
         };
 
         fetchDocument();
-    }, [id]);
-
-
-    // EDIT OnClick Function
-
-    const handleSave = async () => {
-        
-        try {
-            const updatedDocument = {
-                title,
-                content,
-            };
-            const response = await axios.put(`${API_URL}/doc/${id}`, updatedDocument);
-            
-            if( response.status === 200 )
-            {
-                setNotification({
-                    type: 'success',
-                    message: 'Action completed successfully!',
-                });
-                
-                // Redirect to the main page (home page) on success after a delay
-                setTimeout(() => {
-                    nav('/');
-                }, 5000);
-
-                return () => clearTimeout(timeout); // Cleanup timeout on component unmount
-            }
-        } 
-        
-        catch (error) {
-            console.error('Error while saving document:', error);
-            setNotification({
-                type: 'error',
-                message: 'Error! Please try again.',
-            });
-        }
-    };
-
-    //  DELETE OnClick Function
-    const deleteDocument = async () => {
-        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-        
-        try {
-            const response = await axios.delete(`${API_URL}/doc/${document._id}`);
-            // Optionally, you could add a callback to refresh the list of documents after deletion
-            console.log('Document deleted successfully');
-            if( response.status === 200 )
-                {
-                    setNotification({
-                        type: 'success',
-                        message: 'Action completed successfully!',
-                    });
-
-                    // Redirect to the main page (home page) on success after a delay
-                    setTimeout(() => {
-                        nav('/');
-                    }, 5000);
-
-                    return () => clearTimeout(timeout); // Cleanup timeout on component unmount
-                }
-        } 
-        
-        catch (error) {
-            console.error('Error deleting document:', error);
-            setNotification({
-                type: 'error',
-                message: 'Error! Please try again.',
-            });
-        }
-    };
+    }, [id]);  
 
     // Handle case when document is not loaded yet
     if (!document) {
@@ -161,7 +96,7 @@ const ReadDoc = () => {
             {isPopupVisible && (
                 <DeletePopup 
                     onClose={handleClosePopup} 
-                    onDelete={deleteDocument}
+                    onDelete={() => deleteDocument(document._id, setNotification, nav)}
                 />
             )}
 
@@ -193,7 +128,7 @@ const ReadDoc = () => {
                             <button style={{ background:color1 }} className='px-3 py-2 rounded-md hover:scale-105 text-base sm:text-lg md:text-xl'
                                 onMouseOver={() => setColor1(`${theme.hover_color}`)}
                                 onMouseOut={() => setColor1(`${theme.block_color}`)}
-                                onClick={handleSave} // Handle save on click
+                                onClick={() => editDocument(id, title, content, setNotification, nav)}
                             > 
                                 <FontAwesomeIcon icon={faFloppyDisk} style={{ color:`${theme.primary_text}`}}/> 
                                 &nbsp; Edit
@@ -209,24 +144,27 @@ const ReadDoc = () => {
                                     setIconText('red');
                                     setIconBorder('1px solid red')
                                 }}
-                            onMouseOut={() => {
-                                setIconBg('transparent');
-                                setIconText(`${theme.primary_text}`);
-                                setIconBorder(`1px solid ${theme.primary_text}`);
-                            }}
-                            onClick={handleDeleteClick} 
-                            className="px-3 py-2 rounded-md hover:scale-105 hover:cursor-pointer text-base sm:text-lg md:text-xl"/>
+                                onMouseOut={() => {
+                                    setIconBg('transparent');
+                                    setIconText(`${theme.primary_text}`);
+                                    setIconBorder(`1px solid ${theme.primary_text}`);
+                                }}
+                                onClick={handleDeleteClick} 
+                                className="px-3 py-2 rounded-md hover:scale-105 hover:cursor-pointer text-base sm:text-lg md:text-xl"
+                            />
 
                         </div>
                     </div>
 
                     <div className='pb-[2vh] h-[8vh] px-8 flex items-center justify-end'>
 
+                        {/* DOWNLOAD */}
                         <FontAwesomeIcon icon={faDownload} 
                             style={{ background:color3, color:`${theme.primary_text}`, border:`1px solid ${theme.primary_text}` }}
                             onMouseOver={() => setColor3(`${theme.hover_color}`)}
                             onMouseOut={() => setColor3('transparent')}
-                            onClick={CollapseFunction}
+                            onClick={() => downloadPDF(content, font)}
+                            // onClick={handleDownload}
                             className="rounded-md mr-4 p-2 sm:px-3 hover:cursor-pointer hover:scale-105 text-base sm:text-xl"
                         />
                         

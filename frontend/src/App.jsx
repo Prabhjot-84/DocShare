@@ -1,10 +1,9 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import { useAppContext } from './contexts/AppContext.jsx';
-import Home from './pages/Home.jsx';
-import Layout from './pages/Layout.jsx';
-import ReadDoc from './pages/ReadDoc.jsx';
-import CreateDoc from './pages/CreateDoc.jsx';
+import Home from './components/Home.jsx';
+import Layout from './components/Layout.jsx';
+import ReadDoc from './components/ReadDoc.jsx';
+import CreateDoc from './components/CreateDoc.jsx';
 
 function App() {
   return (
@@ -15,7 +14,6 @@ function App() {
           <Route path='/home' element={ <Home/> } />
           <Route path='/create' element={ <CreateDoc /> } />
           <Route path='/doc/:id' element={ <ReadDoc /> } />
-          {/* <Route path='/dashboard' element={ <Dashboard /> } /> */}
         </Route>
       </Routes>
     </>
