@@ -22,6 +22,25 @@ const PORT = process.env.PORT || 5000;
 
 
 app.use(cors()); // Enables Cross-Origin Resource Sharing
+
+// CORS configuration
+const allowedOrigins = [
+  'http://localhost:5173', // For local development
+  'https://doc-share.netlify.app' // Your deployed frontend
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      // Allow the request if the origin is in the allowed list or if there's no origin (i.e., server-side requests)
+      callback(null, true);
+    } else {
+      // Reject the request if the origin is not allowed
+      callback(new Error('CORS policy does not allow this origin'), false);
+    }
+  }
+}));
+
 app.use(express.json()); // Parses incoming JSON requests
 
 

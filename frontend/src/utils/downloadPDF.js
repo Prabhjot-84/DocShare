@@ -1,7 +1,13 @@
+// import pdfMake from 'pdfmake/build/pdfmake';
+// import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+// pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 import pdfMake from 'pdfmake/build/pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';  // Use * to import all named exports
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 
 // Define styles for PDF
 const styles = {
