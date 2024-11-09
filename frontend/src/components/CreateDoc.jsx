@@ -44,7 +44,7 @@ const CreateDoc = () => {
 
             if( response.status === 201 )
             {
-                console.log('Document saved : ', response.data);
+                // console.log('Document saved : ', response.data);
                 setNotification({
                     type: 'success',
                     message: 'Action completed successfully!',

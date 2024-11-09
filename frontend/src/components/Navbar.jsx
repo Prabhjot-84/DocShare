@@ -67,7 +67,7 @@ const Navbar = () => {
                         🎨
                     </button>
 
-                    <div style={{ display:'block', top:FontMenu }} className='absolute right-16 bg-white text-black rounded-sm z-10 text-center w-36'>
+                    <div style={{ display:'block', top:FontMenu }} className='z-30 absolute right-16 bg-white text-black rounded-sm z-10 text-center w-36'>
                         <h1 onClick={() => ChangeFont('Playfair Display')} style={{ fontFamily:'Playfair Display'}} className='text-lg py-1 px-2 hover:font-semibold bg-slate-200 hover:bg-slate-300 m-1 rounded-sm hover:cursor-pointer' > Serif </h1>
                         <h1 onClick={() => ChangeFont('Open Sans')} style={{ fontFamily:'Open Sans'}} className='text-lg py-1 px-2 hover:font-semibold bg-slate-200 hover:bg-slate-300 m-1 rounded-sm hover:cursor-pointer' > Sans-serif </h1>
                         <h1 onClick={() => ChangeFont('Inconsolata')} style={{ fontFamily:'Inconsolata'}} className='text-lg py-1 px-2 hover:font-semibold bg-slate-200 hover:bg-slate-300 m-1 rounded-sm hover:cursor-pointer' > Monospace </h1>
@@ -78,7 +78,7 @@ const Navbar = () => {
                         <h1 onClick={() => ChangeFont('Merienda')} style={{ fontFamily:'Merienda'}} className='text-lg py-1 px-2 hover:font-semibold bg-slate-200 hover:bg-slate-300 m-1 rounded-sm hover:cursor-pointer' > Modern </h1>
                     </div>
 
-                    <div style={{ display:'block', top:ThemeMenu }} className='absolute top-[11vh] right-16 bg-white text-black rounded-sm z-10 text-center w-32'>
+                    <div style={{ display:'block', top:ThemeMenu }} className='z-30 absolute top-[11vh] right-16 bg-white text-black rounded-sm z-10 text-center w-32'>
                         <h1 onClick={() => changeTheme('light')} className='text-lg py-1 px-2 hover:font-semibold bg-slate-200 hover:bg-slate-300 m-1 rounded-sm hover:cursor-pointer flex items-center pl-4' > <div className='w-4 h-4 rounded-sm bg-[white]'></div> &nbsp;Light </h1>
                         <h1 onClick={() => changeTheme('dark')} className='text-lg py-1 px-2 hover:font-semibold bg-slate-200 hover:bg-slate-300 m-1 rounded-sm hover:cursor-pointer flex items-center pl-4' > <div className='w-4 h-4 rounded-sm bg-[#404040]'></div> &nbsp;Dark </h1>
                         <h1 onClick={() => changeTheme('red')} className='text-lg py-1 px-2 hover:font-semibold bg-slate-200 hover:bg-slate-300 m-1 rounded-sm hover:cursor-pointer flex items-center pl-4' > <div className='w-4 h-4 rounded-sm bg-red-500'></div> &nbsp;Red </h1>

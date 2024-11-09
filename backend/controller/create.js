@@ -20,7 +20,7 @@ export const createDoc = async(req, res) => {
         res.status(201).json(savedDocument);
     }
 
-    catch{
+    catch (error) {
         console.error('Error creating document:', error);
         res.status(500).json({ message: 'Server error, please try again later.' });
     }

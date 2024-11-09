@@ -41,7 +41,7 @@ const ReadDoc = () => {
     const [ iconText, setIconText] = useState(`${theme.primary_text}`);
     const [ iconBorder, setIconBorder] = useState(`1px solid ${theme.primary_text}`);
     const [ notification, setNotification] = useState(null);
-    const [isPopupVisible, setIsPopupVisible] = useState(false);
+    const [ isPopupVisible, setIsPopupVisible] = useState(false);
 
     const nav = useNavigate();
 

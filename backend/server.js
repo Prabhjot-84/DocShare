@@ -5,6 +5,9 @@ import dotenv from 'dotenv'
 
 dotenv.config();
 
+import http from 'http';
+import { Server } from 'socket.io';
+
 import { createDoc } from './controller/create.js';
 import { getDocById, getDocumentsByUser } from './controller/read.js';
 import { updateDocById } from './controller/update.js';
@@ -12,6 +15,9 @@ import { deleteDocById } from './controller/delete.js';
 
 
 const app = express();
+const server = http.createServer(app); // Create HTTP server
+const io = new Server(server, { /* options */ }); // Create Socket.io server
+
 const PORT = process.env.PORT || 5000;
 
 

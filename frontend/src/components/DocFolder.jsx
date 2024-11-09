@@ -16,8 +16,13 @@ const DocFolder = ( {document} ) => {
     const { theme } = useAppContext();
     const [ color1, setColor1] = useState(`${theme.block_color}`);
 
+    useEffect(() => {
+        // Update color1 whenever theme.block_color changes
+        setColor1(theme.block_color);
+    }, [theme.block_color]);    
+
     const formatDate = (dateString) => {
-        const date = new Date(dateString);
+        const date = new Date(dateString); 
         const options = { year: 'numeric', month: 'short', day: '2-digit' };
         const formattedDate = date.toLocaleDateString('en-GB', options).replace(/,/g, '');
         return formattedDate;
