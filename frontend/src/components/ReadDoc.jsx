@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import jsPDF from 'jspdf';
-import { htmlToText } from 'html-to-text';
 
 import { useAppContext } from '../contexts/AppContext';
 import Editor from './Editor';
