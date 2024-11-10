@@ -3,10 +3,22 @@
 
 // pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-import pdfMake from 'pdfmake/build/pdfmake';
-import * as pdfFonts from 'pdfmake/build/vfs_fonts';  // Use * to import all named exports
+let pdfMake;
+let pdfFonts;
 
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+if (typeof window !== 'undefined') {
+  // Dynamically import pdfMake and pdfFonts only in the browser
+  import('pdfmake/build/pdfmake').then(module => {
+    pdfMake = module.default;
+    return import('pdfmake/build/vfs_fonts');
+  }).then(module => {
+    pdfFonts = module.default;
+    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+    console.log("pdfMake initialized:", pdfMake); // Check if initialization succeeded
+  }).catch(error => {
+    console.error("Error loading pdfMake:", error);
+  });
+}
 
 
 // Define styles for PDF
